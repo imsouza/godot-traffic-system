@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/street_crossing.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://scenes/crossing_lane_part.tscn" type="PackedScene" id=2]
+
+[node name="CrossingLanes" type="Spatial"]
+
+[node name="Helper" type="Spatial" parent="."]
+
+[node name="Crossing" type="MeshInstance" parent="Helper"]
+mesh = ExtResource( 1 )
+skeleton = NodePath("../..")
+
+[node name="PathTransmitterSouth" parent="." instance=ExtResource( 2 )]
+
+[node name="PathTransmitterWest" parent="." instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.38419e-07, 0, 0 )
+
+[node name="PathTransmitterNorth" parent="." instance=ExtResource( 2 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+
+[node name="PathTransmitterEast" parent="." instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
