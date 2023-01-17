@@ -5,6 +5,7 @@ const PATH_TRANSMITTER = 8
 export var car_velocity: float = 2
 var _new_path
 onready var _raycast = $RayCast
+onready var _raycast2 = $RayCast2
 
 
 func _process(delta):
@@ -38,3 +39,6 @@ func _check_raycast_collisions():
 				number_of_paths += 1
 		# Get random path between 1 (always given) and number of paths
 		_new_path = _collision_object.get_child(round(rand_range(1, number_of_paths)))
+
+func _check_roadlight():
+	var test = _raycast2.get_parent()
