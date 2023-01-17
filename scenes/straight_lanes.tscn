@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/street_straight.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://assets/car.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://scripts/ai_car.gd" type="Script" id=3]
+[ext_resource path="res://scenes/ddhtt.gd" type="Script" id=4]
 
 [sub_resource type="BoxShape" id=2]
 
@@ -11,6 +12,11 @@ _data = {
 "points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 2, 0, 5, 0, 0, 0, 0, 0, 0, 2, 0, -5 ),
 "tilts": PoolRealArray( 0, 0 )
 }
+
+[sub_resource type="PhysicsMaterial" id=7]
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 1, 0.5, 1.42696 )
 
 [sub_resource type="BoxShape" id=3]
 
@@ -52,6 +58,7 @@ car_velocity = 5.0
 
 [node name="Car" type="MeshInstance" parent="PathTransmitterRight/Path1/AICar"]
 transform = Transform( 7.86805e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, 7.86805e-08, 0, 0, 0 )
+layers = 16385
 mesh = ExtResource( 2 )
 
 [node name="RayCast" type="RayCast" parent="PathTransmitterRight/Path1/AICar"]
@@ -63,7 +70,21 @@ collide_with_areas = true
 collide_with_bodies = false
 
 [node name="RayCast2" type="RayCast" parent="PathTransmitterRight/Path1/AICar"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0187821, 0.424407, -0.899912 )
+enabled = true
+cast_to = Vector3( 0, 0, 4 )
 collision_mask = 16384
+collide_with_areas = true
+
+[node name="StaticBody" type="StaticBody" parent="PathTransmitterRight/Path1/AICar"]
+collision_layer = 16384
+collision_mask = 16384
+physics_material_override = SubResource( 7 )
+script = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="PathTransmitterRight/Path1/AICar/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38419e-07, 0.510457, -0.0432162 )
+shape = SubResource( 6 )
 
 [node name="PathTransmitterLeft" type="Area" parent="."]
 collision_layer = 256
