@@ -1,8 +1,20 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://resources/grid_map.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://assets/tree.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://scripts/grid_map.gd" type="Script" id=3]
+[ext_resource path="res://scenes/StaticBody.gd" type="Script" id=4]
+
+[sub_resource type="PhysicsMaterial" id=1]
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1.07441, 1.09262, 1.04743 )
+
+[sub_resource type="CubeMesh" id=3]
+
+[sub_resource type="Skin" id=4]
+
+[sub_resource type="ShaderMaterial" id=5]
 
 [node name="Main" type="Spatial"]
 
@@ -48,3 +60,674 @@ transform = Transform( -1, 8.74228e-08, -4.37114e-08, -4.37114e-08, 1.91069e-15,
 projection = 1
 size = 155.0
 far = 150.0
+
+[node name="trafficLight" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05839, 0 )
+collision_layer = 16384
+collision_mask = 16384
+physics_material_override = SubResource( 1 )
+script = ExtResource( 4 )
+
+[node name="Redlight" type="Timer" parent="trafficLight"]
+wait_time = 8.0
+one_shot = true
+
+[node name="CollisionShape" type="CollisionShape" parent="trafficLight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.42884, 0.518869, -0.637605 )
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="trafficLight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01879, 0, -1.06944 )
+mesh = SubResource( 3 )
+skin = SubResource( 4 )
+skeleton = NodePath("")
+material/0 = SubResource( 5 )
+
+[node name="Greenlight" type="Timer" parent="trafficLight"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Yellowlight" type="Timer" parent="trafficLight"]
+wait_time = 2.0
+one_shot = true
+
+[node name="trafficLight2" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8606, 1.05839, -1.05466 )
+collision_layer = 16384
+collision_mask = 16384
+physics_material_override = SubResource( 1 )
+script = ExtResource( 4 )
+color = "yellow"
+
+[node name="Redlight" type="Timer" parent="trafficLight2"]
+wait_time = 8.0
+one_shot = true
+
+[node name="CollisionShape" type="CollisionShape" parent="trafficLight2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.271289, 0.518869, 4.2449 )
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="trafficLight2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.71843, 0, 0 )
+mesh = SubResource( 3 )
+skin = SubResource( 4 )
+skeleton = NodePath("")
+material/0 = SubResource( 5 )
+
+[node name="Greenlight" type="Timer" parent="trafficLight2"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Yellowlight" type="Timer" parent="trafficLight2"]
+wait_time = 2.0
+one_shot = true
+
+[node name="trafficLight3" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9129, 1.05839, 11.0819 )
+collision_layer = 16384
+collision_mask = 16384
+physics_material_override = SubResource( 1 )
+script = ExtResource( 4 )
+
+[node name="Redlight" type="Timer" parent="trafficLight3"]
+wait_time = 8.0
+one_shot = true
+
+[node name="CollisionShape" type="CollisionShape" parent="trafficLight3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.45216, 0.518869, 0.407613 )
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="trafficLight3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.71843, 0, 0 )
+mesh = SubResource( 3 )
+skin = SubResource( 4 )
+skeleton = NodePath("")
+material/0 = SubResource( 5 )
+
+[node name="Greenlight" type="Timer" parent="trafficLight3"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Yellowlight" type="Timer" parent="trafficLight3"]
+wait_time = 2.0
+one_shot = true
+
+[node name="trafficLight4" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.382005, 1.05839, 11.0705 )
+collision_layer = 16384
+collision_mask = 16384
+physics_material_override = SubResource( 1 )
+script = ExtResource( 4 )
+color = "yellow"
+
+[node name="Redlight" type="Timer" parent="trafficLight4"]
+wait_time = 8.0
+one_shot = true
+
+[node name="CollisionShape" type="CollisionShape" parent="trafficLight4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83928, 0.51887, -4.52097 )
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="trafficLight4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.71843, 0, 0 )
+mesh = SubResource( 3 )
+skin = SubResource( 4 )
+skeleton = NodePath("")
+material/0 = SubResource( 5 )
+
+[node name="Greenlight" type="Timer" parent="trafficLight4"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Yellowlight" type="Timer" parent="trafficLight4"]
+wait_time = 2.0
+one_shot = true
+
+[node name="trafficLight5" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.9202, 1.05839, -0.0481987 )
+collision_layer = 16384
+collision_mask = 16384
+physics_material_override = SubResource( 1 )
+script = ExtResource( 4 )
+
+[node name="Redlight" type="Timer" parent="trafficLight5"]
+wait_time = 8.0
+one_shot = true
+
+[node name="CollisionShape" type="CollisionShape" parent="trafficLight5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.42884, 0.518869, -0.637605 )
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="trafficLight5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01879, 0, -1.06944 )
+mesh = SubResource( 3 )
+skin = SubResource( 4 )
+skeleton = NodePath("")
+material/0 = SubResource( 5 )
+
+[node name="Greenlight" type="Timer" parent="trafficLight5"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Yellowlight" type="Timer" parent="trafficLight5"]
+wait_time = 2.0
+one_shot = true
+
+[node name="trafficLight6" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30.2622, 1.05839, -0.397938 )
+collision_layer = 16384
+collision_mask = 16384
+physics_material_override = SubResource( 1 )
+script = ExtResource( 4 )
+
+[node name="Redlight" type="Timer" parent="trafficLight6"]
+wait_time = 8.0
+one_shot = true
+
+[node name="CollisionShape" type="CollisionShape" parent="trafficLight6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.42884, 0.518869, -0.637605 )
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="trafficLight6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01879, 0, -1.06944 )
+mesh = SubResource( 3 )
+skin = SubResource( 4 )
+skeleton = NodePath("")
+material/0 = SubResource( 5 )
+
+[node name="Greenlight" type="Timer" parent="trafficLight6"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Yellowlight" type="Timer" parent="trafficLight6"]
+wait_time = 2.0
+one_shot = true
+
+[node name="trafficLight7" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16276, 1.05839, -30.2083 )
+collision_layer = 16384
+collision_mask = 16384
+physics_material_override = SubResource( 1 )
+script = ExtResource( 4 )
+
+[node name="Redlight" type="Timer" parent="trafficLight7"]
+wait_time = 8.0
+one_shot = true
+
+[node name="CollisionShape" type="CollisionShape" parent="trafficLight7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.42884, 0.518869, -0.637605 )
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="trafficLight7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01879, 0, -1.06944 )
+mesh = SubResource( 3 )
+skin = SubResource( 4 )
+skeleton = NodePath("")
+material/0 = SubResource( 5 )
+
+[node name="Greenlight" type="Timer" parent="trafficLight7"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Yellowlight" type="Timer" parent="trafficLight7"]
+wait_time = 2.0
+one_shot = true
+
+[node name="trafficLight8" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39522, 1.05839, 30.3492 )
+collision_layer = 16384
+collision_mask = 16384
+physics_material_override = SubResource( 1 )
+script = ExtResource( 4 )
+
+[node name="Redlight" type="Timer" parent="trafficLight8"]
+wait_time = 8.0
+one_shot = true
+
+[node name="CollisionShape" type="CollisionShape" parent="trafficLight8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.42884, 0.518869, -0.637605 )
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="trafficLight8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01879, 0, -1.06944 )
+mesh = SubResource( 3 )
+skin = SubResource( 4 )
+skeleton = NodePath("")
+material/0 = SubResource( 5 )
+
+[node name="Greenlight" type="Timer" parent="trafficLight8"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Yellowlight" type="Timer" parent="trafficLight8"]
+wait_time = 2.0
+one_shot = true
+
+[node name="trafficLight9" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 41.8697, 1.05839, -1.07269 )
+collision_layer = 16384
+collision_mask = 16384
+physics_material_override = SubResource( 1 )
+script = ExtResource( 4 )
+color = "yellow"
+
+[node name="Redlight" type="Timer" parent="trafficLight9"]
+wait_time = 8.0
+one_shot = true
+
+[node name="CollisionShape" type="CollisionShape" parent="trafficLight9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.271289, 0.518869, 4.2449 )
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="trafficLight9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.71843, 0, 0 )
+mesh = SubResource( 3 )
+skin = SubResource( 4 )
+skeleton = NodePath("")
+material/0 = SubResource( 5 )
+
+[node name="Greenlight" type="Timer" parent="trafficLight9"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Yellowlight" type="Timer" parent="trafficLight9"]
+wait_time = 2.0
+one_shot = true
+
+[node name="trafficLight10" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.962, 1.05839, -31.2041 )
+collision_layer = 16384
+collision_mask = 16384
+physics_material_override = SubResource( 1 )
+script = ExtResource( 4 )
+color = "yellow"
+
+[node name="Redlight" type="Timer" parent="trafficLight10"]
+wait_time = 8.0
+one_shot = true
+
+[node name="CollisionShape" type="CollisionShape" parent="trafficLight10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.271289, 0.518869, 4.2449 )
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="trafficLight10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.71843, 0, 0 )
+mesh = SubResource( 3 )
+skin = SubResource( 4 )
+skeleton = NodePath("")
+material/0 = SubResource( 5 )
+
+[node name="Greenlight" type="Timer" parent="trafficLight10"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Yellowlight" type="Timer" parent="trafficLight10"]
+wait_time = 2.0
+one_shot = true
+
+[node name="trafficLight11" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.2921, 1.05839, -0.971797 )
+collision_layer = 16384
+collision_mask = 16384
+physics_material_override = SubResource( 1 )
+script = ExtResource( 4 )
+color = "yellow"
+
+[node name="Redlight" type="Timer" parent="trafficLight11"]
+wait_time = 8.0
+one_shot = true
+
+[node name="CollisionShape" type="CollisionShape" parent="trafficLight11"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.271289, 0.518869, 4.2449 )
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="trafficLight11"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.71843, 0, 0 )
+mesh = SubResource( 3 )
+skin = SubResource( 4 )
+skeleton = NodePath("")
+material/0 = SubResource( 5 )
+
+[node name="Greenlight" type="Timer" parent="trafficLight11"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Yellowlight" type="Timer" parent="trafficLight11"]
+wait_time = 2.0
+one_shot = true
+
+[node name="trafficLight12" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9229, 1.05839, 28.3599 )
+collision_layer = 16384
+collision_mask = 16384
+physics_material_override = SubResource( 1 )
+script = ExtResource( 4 )
+color = "yellow"
+
+[node name="Redlight" type="Timer" parent="trafficLight12"]
+wait_time = 8.0
+one_shot = true
+
+[node name="CollisionShape" type="CollisionShape" parent="trafficLight12"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.271289, 0.518869, 4.2449 )
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="trafficLight12"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.71843, 0, 0 )
+mesh = SubResource( 3 )
+skin = SubResource( 4 )
+skeleton = NodePath("")
+material/0 = SubResource( 5 )
+
+[node name="Greenlight" type="Timer" parent="trafficLight12"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Yellowlight" type="Timer" parent="trafficLight12"]
+wait_time = 2.0
+one_shot = true
+
+[node name="trafficLight13" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 41.8478, 1.05839, 11.5899 )
+collision_layer = 16384
+collision_mask = 16384
+physics_material_override = SubResource( 1 )
+script = ExtResource( 4 )
+
+[node name="Redlight" type="Timer" parent="trafficLight13"]
+wait_time = 8.0
+one_shot = true
+
+[node name="CollisionShape" type="CollisionShape" parent="trafficLight13"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.45216, 0.518869, 0.407613 )
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="trafficLight13"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.71843, 0, 0 )
+mesh = SubResource( 3 )
+skin = SubResource( 4 )
+skeleton = NodePath("")
+material/0 = SubResource( 5 )
+
+[node name="Greenlight" type="Timer" parent="trafficLight13"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Yellowlight" type="Timer" parent="trafficLight13"]
+wait_time = 2.0
+one_shot = true
+
+[node name="trafficLight14" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4973, 1.05839, 10.9313 )
+collision_layer = 16384
+collision_mask = 16384
+physics_material_override = SubResource( 1 )
+script = ExtResource( 4 )
+
+[node name="Redlight" type="Timer" parent="trafficLight14"]
+wait_time = 8.0
+one_shot = true
+
+[node name="CollisionShape" type="CollisionShape" parent="trafficLight14"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.45216, 0.518869, 0.407613 )
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="trafficLight14"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.71843, 0, 0 )
+mesh = SubResource( 3 )
+skin = SubResource( 4 )
+skeleton = NodePath("")
+material/0 = SubResource( 5 )
+
+[node name="Greenlight" type="Timer" parent="trafficLight14"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Yellowlight" type="Timer" parent="trafficLight14"]
+wait_time = 2.0
+one_shot = true
+
+[node name="trafficLight15" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1918, 1.05839, -18.6007 )
+collision_layer = 16384
+collision_mask = 16384
+physics_material_override = SubResource( 1 )
+script = ExtResource( 4 )
+
+[node name="Redlight" type="Timer" parent="trafficLight15"]
+wait_time = 8.0
+one_shot = true
+
+[node name="CollisionShape" type="CollisionShape" parent="trafficLight15"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.45216, 0.518869, 0.407613 )
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="trafficLight15"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.71843, 0, 0 )
+mesh = SubResource( 3 )
+skin = SubResource( 4 )
+skeleton = NodePath("")
+material/0 = SubResource( 5 )
+
+[node name="Greenlight" type="Timer" parent="trafficLight15"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Yellowlight" type="Timer" parent="trafficLight15"]
+wait_time = 2.0
+one_shot = true
+
+[node name="trafficLight16" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0425, 1.05839, 41.84 )
+collision_layer = 16384
+collision_mask = 16384
+physics_material_override = SubResource( 1 )
+script = ExtResource( 4 )
+
+[node name="Redlight" type="Timer" parent="trafficLight16"]
+wait_time = 8.0
+one_shot = true
+
+[node name="CollisionShape" type="CollisionShape" parent="trafficLight16"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.45216, 0.518869, 0.407613 )
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="trafficLight16"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.71843, 0, 0 )
+mesh = SubResource( 3 )
+skin = SubResource( 4 )
+skeleton = NodePath("")
+material/0 = SubResource( 5 )
+
+[node name="Greenlight" type="Timer" parent="trafficLight16"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Yellowlight" type="Timer" parent="trafficLight16"]
+wait_time = 2.0
+one_shot = true
+
+[node name="trafficLight17" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30.6255, 1.05839, 11.2797 )
+collision_layer = 16384
+collision_mask = 16384
+physics_material_override = SubResource( 1 )
+script = ExtResource( 4 )
+color = "yellow"
+
+[node name="Redlight" type="Timer" parent="trafficLight17"]
+wait_time = 8.0
+one_shot = true
+
+[node name="CollisionShape" type="CollisionShape" parent="trafficLight17"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83928, 0.51887, -4.52097 )
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="trafficLight17"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.71843, 0, 0 )
+mesh = SubResource( 3 )
+skin = SubResource( 4 )
+skeleton = NodePath("")
+material/0 = SubResource( 5 )
+
+[node name="Greenlight" type="Timer" parent="trafficLight17"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Yellowlight" type="Timer" parent="trafficLight17"]
+wait_time = 2.0
+one_shot = true
+
+[node name="trafficLight18" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47634, 1.05839, 41.5054 )
+collision_layer = 16384
+collision_mask = 16384
+physics_material_override = SubResource( 1 )
+script = ExtResource( 4 )
+color = "yellow"
+
+[node name="Redlight" type="Timer" parent="trafficLight18"]
+wait_time = 8.0
+one_shot = true
+
+[node name="CollisionShape" type="CollisionShape" parent="trafficLight18"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83928, 0.51887, -4.52097 )
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="trafficLight18"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.71843, 0, 0 )
+mesh = SubResource( 3 )
+skin = SubResource( 4 )
+skeleton = NodePath("")
+material/0 = SubResource( 5 )
+
+[node name="Greenlight" type="Timer" parent="trafficLight18"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Yellowlight" type="Timer" parent="trafficLight18"]
+wait_time = 2.0
+one_shot = true
+
+[node name="trafficLight19" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.9258, 1.05839, 11.4028 )
+collision_layer = 16384
+collision_mask = 16384
+physics_material_override = SubResource( 1 )
+script = ExtResource( 4 )
+color = "yellow"
+
+[node name="Redlight" type="Timer" parent="trafficLight19"]
+wait_time = 8.0
+one_shot = true
+
+[node name="CollisionShape" type="CollisionShape" parent="trafficLight19"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83928, 0.51887, -4.52097 )
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="trafficLight19"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.71843, 0, 0 )
+mesh = SubResource( 3 )
+skin = SubResource( 4 )
+skeleton = NodePath("")
+material/0 = SubResource( 5 )
+
+[node name="Greenlight" type="Timer" parent="trafficLight19"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Yellowlight" type="Timer" parent="trafficLight19"]
+wait_time = 2.0
+one_shot = true
+
+[node name="trafficLight20" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.140024, 1.05839, -18.7234 )
+collision_layer = 16384
+collision_mask = 16384
+physics_material_override = SubResource( 1 )
+script = ExtResource( 4 )
+color = "yellow"
+
+[node name="Redlight" type="Timer" parent="trafficLight20"]
+wait_time = 8.0
+one_shot = true
+
+[node name="CollisionShape" type="CollisionShape" parent="trafficLight20"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83928, 0.51887, -4.52097 )
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="trafficLight20"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.71843, 0, 0 )
+mesh = SubResource( 3 )
+skin = SubResource( 4 )
+skeleton = NodePath("")
+material/0 = SubResource( 5 )
+
+[node name="Greenlight" type="Timer" parent="trafficLight20"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Yellowlight" type="Timer" parent="trafficLight20"]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="trafficLight/Redlight" to="trafficLight" method="_on_Redlight_timeout"]
+[connection signal="timeout" from="trafficLight/Greenlight" to="trafficLight" method="_on_Greenlight_timeout"]
+[connection signal="timeout" from="trafficLight/Yellowlight" to="trafficLight" method="_on_Yellowtimer_timeout"]
+[connection signal="timeout" from="trafficLight2/Redlight" to="trafficLight2" method="_on_Redlight_timeout"]
+[connection signal="timeout" from="trafficLight2/Greenlight" to="trafficLight2" method="_on_Greenlight_timeout"]
+[connection signal="timeout" from="trafficLight2/Yellowlight" to="trafficLight2" method="_on_Yellowtimer_timeout"]
+[connection signal="timeout" from="trafficLight3/Redlight" to="trafficLight3" method="_on_Redlight_timeout"]
+[connection signal="timeout" from="trafficLight3/Greenlight" to="trafficLight3" method="_on_Greenlight_timeout"]
+[connection signal="timeout" from="trafficLight3/Yellowlight" to="trafficLight3" method="_on_Yellowtimer_timeout"]
+[connection signal="timeout" from="trafficLight4/Redlight" to="trafficLight4" method="_on_Redlight_timeout"]
+[connection signal="timeout" from="trafficLight4/Greenlight" to="trafficLight4" method="_on_Greenlight_timeout"]
+[connection signal="timeout" from="trafficLight4/Yellowlight" to="trafficLight4" method="_on_Yellowtimer_timeout"]
+[connection signal="timeout" from="trafficLight5/Redlight" to="trafficLight5" method="_on_Redlight_timeout"]
+[connection signal="timeout" from="trafficLight5/Greenlight" to="trafficLight5" method="_on_Greenlight_timeout"]
+[connection signal="timeout" from="trafficLight5/Yellowlight" to="trafficLight5" method="_on_Yellowtimer_timeout"]
+[connection signal="timeout" from="trafficLight6/Redlight" to="trafficLight6" method="_on_Redlight_timeout"]
+[connection signal="timeout" from="trafficLight6/Greenlight" to="trafficLight6" method="_on_Greenlight_timeout"]
+[connection signal="timeout" from="trafficLight6/Yellowlight" to="trafficLight6" method="_on_Yellowtimer_timeout"]
+[connection signal="timeout" from="trafficLight7/Redlight" to="trafficLight7" method="_on_Redlight_timeout"]
+[connection signal="timeout" from="trafficLight7/Greenlight" to="trafficLight7" method="_on_Greenlight_timeout"]
+[connection signal="timeout" from="trafficLight7/Yellowlight" to="trafficLight7" method="_on_Yellowtimer_timeout"]
+[connection signal="timeout" from="trafficLight8/Redlight" to="trafficLight8" method="_on_Redlight_timeout"]
+[connection signal="timeout" from="trafficLight8/Greenlight" to="trafficLight8" method="_on_Greenlight_timeout"]
+[connection signal="timeout" from="trafficLight8/Yellowlight" to="trafficLight8" method="_on_Yellowtimer_timeout"]
+[connection signal="timeout" from="trafficLight9/Redlight" to="trafficLight9" method="_on_Redlight_timeout"]
+[connection signal="timeout" from="trafficLight9/Greenlight" to="trafficLight9" method="_on_Greenlight_timeout"]
+[connection signal="timeout" from="trafficLight9/Yellowlight" to="trafficLight9" method="_on_Yellowtimer_timeout"]
+[connection signal="timeout" from="trafficLight10/Redlight" to="trafficLight10" method="_on_Redlight_timeout"]
+[connection signal="timeout" from="trafficLight10/Greenlight" to="trafficLight10" method="_on_Greenlight_timeout"]
+[connection signal="timeout" from="trafficLight10/Yellowlight" to="trafficLight10" method="_on_Yellowtimer_timeout"]
+[connection signal="timeout" from="trafficLight11/Redlight" to="trafficLight11" method="_on_Redlight_timeout"]
+[connection signal="timeout" from="trafficLight11/Greenlight" to="trafficLight11" method="_on_Greenlight_timeout"]
+[connection signal="timeout" from="trafficLight11/Yellowlight" to="trafficLight11" method="_on_Yellowtimer_timeout"]
+[connection signal="timeout" from="trafficLight12/Redlight" to="trafficLight12" method="_on_Redlight_timeout"]
+[connection signal="timeout" from="trafficLight12/Greenlight" to="trafficLight12" method="_on_Greenlight_timeout"]
+[connection signal="timeout" from="trafficLight12/Yellowlight" to="trafficLight12" method="_on_Yellowtimer_timeout"]
+[connection signal="timeout" from="trafficLight13/Redlight" to="trafficLight13" method="_on_Redlight_timeout"]
+[connection signal="timeout" from="trafficLight13/Greenlight" to="trafficLight13" method="_on_Greenlight_timeout"]
+[connection signal="timeout" from="trafficLight13/Yellowlight" to="trafficLight13" method="_on_Yellowtimer_timeout"]
+[connection signal="timeout" from="trafficLight14/Redlight" to="trafficLight14" method="_on_Redlight_timeout"]
+[connection signal="timeout" from="trafficLight14/Greenlight" to="trafficLight14" method="_on_Greenlight_timeout"]
+[connection signal="timeout" from="trafficLight14/Yellowlight" to="trafficLight14" method="_on_Yellowtimer_timeout"]
+[connection signal="timeout" from="trafficLight15/Redlight" to="trafficLight15" method="_on_Redlight_timeout"]
+[connection signal="timeout" from="trafficLight15/Greenlight" to="trafficLight15" method="_on_Greenlight_timeout"]
+[connection signal="timeout" from="trafficLight15/Yellowlight" to="trafficLight15" method="_on_Yellowtimer_timeout"]
+[connection signal="timeout" from="trafficLight16/Redlight" to="trafficLight16" method="_on_Redlight_timeout"]
+[connection signal="timeout" from="trafficLight16/Greenlight" to="trafficLight16" method="_on_Greenlight_timeout"]
+[connection signal="timeout" from="trafficLight16/Yellowlight" to="trafficLight16" method="_on_Yellowtimer_timeout"]
+[connection signal="timeout" from="trafficLight17/Redlight" to="trafficLight17" method="_on_Redlight_timeout"]
+[connection signal="timeout" from="trafficLight17/Greenlight" to="trafficLight17" method="_on_Greenlight_timeout"]
+[connection signal="timeout" from="trafficLight17/Yellowlight" to="trafficLight17" method="_on_Yellowtimer_timeout"]
+[connection signal="timeout" from="trafficLight18/Redlight" to="trafficLight18" method="_on_Redlight_timeout"]
+[connection signal="timeout" from="trafficLight18/Greenlight" to="trafficLight18" method="_on_Greenlight_timeout"]
+[connection signal="timeout" from="trafficLight18/Yellowlight" to="trafficLight18" method="_on_Yellowtimer_timeout"]
+[connection signal="timeout" from="trafficLight19/Redlight" to="trafficLight19" method="_on_Redlight_timeout"]
+[connection signal="timeout" from="trafficLight19/Greenlight" to="trafficLight19" method="_on_Greenlight_timeout"]
+[connection signal="timeout" from="trafficLight19/Yellowlight" to="trafficLight19" method="_on_Yellowtimer_timeout"]
+[connection signal="timeout" from="trafficLight20/Redlight" to="trafficLight20" method="_on_Redlight_timeout"]
+[connection signal="timeout" from="trafficLight20/Greenlight" to="trafficLight20" method="_on_Greenlight_timeout"]
+[connection signal="timeout" from="trafficLight20/Yellowlight" to="trafficLight20" method="_on_Yellowtimer_timeout"]

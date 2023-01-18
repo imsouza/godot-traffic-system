@@ -4,17 +4,28 @@ signal path_end_reached
 const PATH_TRANSMITTER = 8
 export var car_velocity: float = 2
 var _new_path
+var trafficLightColor
+onready var color = 'car'
 onready var _raycast = $RayCast
+onready var _raycast2 = $RayCast2
 
 
 func _process(delta):
 	# Movement
-	offset += car_velocity * delta
 	# Check for next path
+	if _raycast2.is_colliding():
+		trafficLightColor = _check_roadlight()
 	if _raycast.is_colliding():
 		_check_raycast_collisions()
 	if unit_offset == 1:
 		emit_signal("path_end_reached")
+	
+	if trafficLightColor == null or trafficLightColor == 'green':
+		offset += car_velocity * delta
+	elif trafficLightColor == 'yellow':
+		offset += car_velocity * delta * 0.5
+	
+	trafficLightColor = null
 
 
 func _on_AICar_path_end_reached():
@@ -38,3 +49,7 @@ func _check_raycast_collisions():
 				number_of_paths += 1
 		# Get random path between 1 (always given) and number of paths
 		_new_path = _collision_object.get_child(round(rand_range(1, number_of_paths)))
+
+func _check_roadlight():
+	var trafficLightColor = _raycast2.get_collider().get('color')
+	return trafficLightColor
